@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add new employee{% endblock %}
+
+    {% block bread %}
+      → Add new Employee
+    {% endblock %}
+
+{% block body %}
+  
+  {{ include ('employees/_form.html.twig') }}
+
+{% endblock %}

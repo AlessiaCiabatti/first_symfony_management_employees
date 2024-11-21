@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Employees List{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <h1>Employees List</h1>
+
+    {# stampa i dipendenti #}
+    {% for employee in employees %}
+
+    {{ employee.name }}
+    {{ employee.lastname }}
+    {{ employee.birthday | date("M j, y") }}
+    {{ employee.gender}}
+    {{ employee.salary}}
+    {# Stampa il nome del dipartimento invece dell'ID #}
+    {{ employee.department.department }}
+
+    {% endfor %}
+</div>
+{% endblock %}

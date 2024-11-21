@@ -1,0 +1,38 @@
+{{ form_start(form) }}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+
+    <div class="row">
+        <div class="col">
+            {{ form_label(form.name, 'Please enter a Name') }}
+            {{ form_widget(form.name) }}
+        </div>
+        <div class="col" id="some-custom-id">
+            {{ form_label(form.lastname, 'Please enter a Lastname') }}
+            {{ form_widget(form.lastname) }}
+        </div>
+        <div class="col" id="some-custom-id">
+            {{ form_label(form.birthday, 'Please enter a birthday') }}
+            {{ form_widget(form.birthday) }}
+        </div>
+        <div class="col" id="some-custom-id">
+            {{ form_label(form.gender) }}
+            {{ form_widget(form.gender) }}
+        </div>
+        <div class="col" id="some-custom-id">
+            {{ form_label(form.salary) }}
+            {{ form_widget(form.salary) }}
+        </div>
+        <div class="col" id="some-custom-id">
+            {{ form_label(form.department) }}
+            {{ form_widget(form.department) }}
+        </div>
+
+        <div>
+          <button type="submit">Save</button>
+        </div>
+    </div>
+{{ form_end(form) }}
+
+
