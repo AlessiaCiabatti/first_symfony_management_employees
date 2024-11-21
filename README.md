@@ -7,6 +7,7 @@ Immaginiamo che il nostro gestionale debba permettere di:
 1. Visualizzare un elenco di dipendenti.
 2. Aggiungere nuovi dipendenti.
 3. Visualizzare i dettagli di un singolo dipendente.
+4. Modificare i dettagli di un singolo dipendente.
 
 
 Avremo due entità principali:

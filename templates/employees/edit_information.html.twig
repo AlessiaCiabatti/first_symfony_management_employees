@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editing Employee Information{% endblock %}
+
+    {% block bread %}
+      → Editing Employee Information
+    {% endblock %}
+
+{% block body %}
+  
+  <div class="container my-5">
+    <div class="d-flex justify-content-between mb-5">
+      <h1>Editing Employee Information</h1>
+      <div>
+          <a class="btn btn-primary" href="{{path('app_employees_edit_information')}}">Employees List</a>
+      </div>
+    </div>
+
+    {{ include ('employees/_form.html.twig') }}
+  </div>
+  
+
+{% endblock %}

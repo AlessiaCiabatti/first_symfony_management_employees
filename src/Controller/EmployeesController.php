@@ -14,6 +14,8 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class EmployeesController extends AbstractController
 {
+
+    
     #[Route('/employees', name: 'app_employees')]
     public function index(EmployeesRepository $employee): Response
     {
@@ -48,7 +50,7 @@ class EmployeesController extends AbstractController
         }
 
         return $this->render('employees/add.html.twig', [
-            'form' => $form->createView(),  // Passa il form come una vista
+            'form' => $form
         ]);
         
     }
@@ -60,4 +62,36 @@ class EmployeesController extends AbstractController
             'employee' => $employee,
         ]);
     }
+
+    #[Route('/employees/{employee}/edit', name: 'app_employees_edit_information')]
+    public function edit(Employees $employee, Request $request, EntityManagerInterface $entityManager): Response
+    {
+        // $employee = new Employees();
+        $form = $this->createForm(EmployeesType::class, $employee);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $employee = $form->getData();
+
+            // Dice a Doctrine che vuoi salvare o aggiornare l'entità $employee nel database.
+            // Doctrine prepara il processo di persistenza, ma non esegue ancora l'operazione.
+            $entityManager->persist($employee);
+
+            // Salva nel database
+            $entityManager->flush();
+
+            // Aggiunge un messaggio "flash", che è un messaggio temporaneo mostrato solo nella prossima richiesta HTTP.
+            $this->addFlash('success', 'Your new employee have been updated');
+
+            return $this->redirectToRoute('app_employees');
+
+        }
+
+        return $this->render('employees/add.html.twig', [
+            'form' => $form
+        ]);
+
+    }
+    
 }
