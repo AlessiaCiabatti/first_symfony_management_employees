@@ -8,6 +8,16 @@
 
 {% block body %}
   
-  {{ include ('employees/_form.html.twig') }}
+  <div class="container my-5">
+    <div class="d-flex justify-content-between mb-5">
+      <h1>Add New Employee</h1>
+      <div>
+          <a class="btn btn-primary" href="{{path('app_employees')}}">Employees List</a>
+      </div>
+    </div>
+
+    {{ include ('employees/_form.html.twig') }}
+  </div>
+  
 
 {% endblock %}

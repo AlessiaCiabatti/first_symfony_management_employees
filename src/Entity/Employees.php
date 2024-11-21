@@ -33,6 +33,9 @@ class Employees
     #[ORM\JoinColumn(nullable: false)]
     private ?Department $department = null;
 
+    #[ORM\Column(length: 500, nullable: true)]
+    private ?string $experience = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -106,6 +109,18 @@ class Employees
     public function setDepartment(?Department $department): static
     {
         $this->department = $department;
+
+        return $this;
+    }
+
+    public function getExperience(): ?string
+    {
+        return $this->experience;
+    }
+
+    public function setExperience(?string $experience): static
+    {
+        $this->experience = $experience;
 
         return $this;
     }

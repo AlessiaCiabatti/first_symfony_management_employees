@@ -8,6 +8,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+
 
 class EmployeesType extends AbstractType
 {
@@ -25,7 +27,14 @@ class EmployeesType extends AbstractType
                 'class' => Department::class,
                 'choice_label' => 'department',
             ])
-        ;
+            ->add('experience', TextareaType::class, [
+                'required' => false,
+                'label' => 'Experience',
+                'attr' => [
+                    'rows' => 5,  // Imposta l'altezza della textarea
+                    'cols' => 50, // Imposta la larghezza della textarea
+                ],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -48,7 +48,16 @@ class EmployeesController extends AbstractController
         }
 
         return $this->render('employees/add.html.twig', [
-            'form' => $form
+            'form' => $form->createView(),  // Passa il form come una vista
+        ]);
+        
+    }
+
+    #[Route('/employees/{employee}', name: 'app_employees_show_information')]
+    public function showOne(Employees $employee): Response
+    {
+        return $this->render('employees/show_information.html.twig', [
+            'employee' => $employee,
         ]);
     }
 }

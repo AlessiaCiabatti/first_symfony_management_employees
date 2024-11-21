@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Information About {{ employee.name }}{% endblock %}
+
+    {% block bread %}
+      {# → Information About {{ employee.name }} #}
+    {% endblock %}
+
+{% block body %}
+  
+  {{ include('employees/_information.html.twig') }}
+
+{% endblock %}

@@ -1,0 +1,57 @@
+<div class="container my-5">
+<div class="d-flex justify-content-between">
+  <div>
+    <h3>
+      {{ employee.name}}
+      {{ employee.lastname}}
+    </h3>
+  </div>
+  <div>
+    <a class="btn btn-primary" href="{{path('app_employees')}}">Employees List</a>
+  </div>
+</div>
+ 
+
+  <div class="my-5 bg-white p-3 border border-5 rounded-3">
+    <div class="d-flex flex-wrap justify-content-between mb-5">
+      <div>
+        <h3>Name</h3>
+        <p>{{ employee.name }}</p>
+      </div>
+
+      <div>
+        <h3>LastName</h3>
+        <p>{{ employee.lastname }}</p>
+      </div>
+
+      <div>
+        <h3>Birthday</h3>
+        <p>{{ employee.birthday | date("j F Y") }}</p>
+      </div>
+
+      <div>
+        <h3>Gender</h3>
+        <p>{{ employee.gender }}</p>
+      </div>
+
+      <div>
+        <h3>Salary</h3>
+        <p>{{ employee.salary }}</p>
+      </div>
+
+      <div>
+        <h3>Department</h3>
+        <p>{{ employee.department.department }}</p>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <h3>Experience</h3>
+        <p>{{ employee.experience }}</p>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
