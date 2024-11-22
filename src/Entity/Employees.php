@@ -6,6 +6,10 @@ use App\Repository\EmployeesRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+// importa questo per errori
+use Symfony\Component\Validator\Constraints as Assert;
+
+
 #[ORM\Entity(repositoryClass: EmployeesRepository::class)]
 class Employees
 {
@@ -15,9 +19,15 @@ class Employees
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    // errori
+    #[Assert\NotBlank()]
+    #[Assert\Length(min:2, max: 255, minMessage: 'Name is too short, 2 charachters is the minimun')]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
+    // errori
+    #[Assert\NotBlank()]
+    #[Assert\Length(min:2, max: 255, minMessage: 'Lastname is too short, 2 charachters is the minimun')]
     private ?string $lastname = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]

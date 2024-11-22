@@ -2,6 +2,9 @@
 
 {% block body %}
 <div class="example-wrapper container my-5">
+
+    {{include('employees/_message.html.twig')}}
+
     <div class="d-flex justify-content-between mb-5">
         <h1>Employees List</h1>
         <div>
@@ -33,7 +36,7 @@
                     <td>€ {{ employee.salary}}</td> #}
                     <td>{{ employee.department.department }}</td>
                     <td><a href="{{path('app_employees_show_information', { employee : employee.id }) }}" class="btn btn-info">More Info</a></td>
-                    <td><a href="{{path('app_employees_edit_information', { employee : employee.id }) }}" class="btn btn-warning">Edit Info</a></td>
+                    <td><a href="{{path('app_employees_edit_information', { 'employee' : employee.id }) }}" class="btn btn-warning">Edit Info</a></td>
                 </tr>
             </tbody>
         {% endfor %}

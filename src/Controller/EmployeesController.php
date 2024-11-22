@@ -15,8 +15,8 @@ use Doctrine\ORM\EntityManagerInterface;
 class EmployeesController extends AbstractController
 {
 
-    
-    #[Route('/employees', name: 'app_employees')]
+
+    #[Route('/', name: 'app_employees')]
     public function index(EmployeesRepository $employee): Response
     {
         return $this->render('employees/index.html.twig', [
@@ -32,7 +32,7 @@ class EmployeesController extends AbstractController
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $employee = $form->getData();
 
             // Dice a Doctrine che vuoi salvare o aggiornare l'entità $employee nel database.
@@ -46,13 +46,11 @@ class EmployeesController extends AbstractController
             $this->addFlash('success', 'Your new employee have been updated');
 
             return $this->redirectToRoute('app_employees');
-
         }
 
         return $this->render('employees/add.html.twig', [
             'form' => $form
         ]);
-        
     }
 
     #[Route('/employees/{employee}', name: 'app_employees_show_information')]
@@ -71,8 +69,8 @@ class EmployeesController extends AbstractController
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
-            $employee = $form->getData();
+        if ($form->isSubmitted() && $form->isValid()) {
+            // $employee = $form->getData();
 
             // Dice a Doctrine che vuoi salvare o aggiornare l'entità $employee nel database.
             // Doctrine prepara il processo di persistenza, ma non esegue ancora l'operazione.
@@ -82,16 +80,14 @@ class EmployeesController extends AbstractController
             $entityManager->flush();
 
             // Aggiunge un messaggio "flash", che è un messaggio temporaneo mostrato solo nella prossima richiesta HTTP.
-            $this->addFlash('success', 'Your new employee have been updated');
+            $this->addFlash('success', 'Your information have been modify');
 
             return $this->redirectToRoute('app_employees');
-
         }
 
-        return $this->render('employees/add.html.twig', [
-            'form' => $form
+        return $this->render('employees/edit_information.html.twig', [
+            'form' => $form,
+            'employee' => $employee,  // Passaggio dell'employee al template
         ]);
-
     }
-    
 }

@@ -1,4 +1,4 @@
-{{ form_start(form) }}
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
     <div class="my-custom-class-for-errors">
         {{ form_errors(form) }}
     </div>
@@ -7,10 +7,12 @@
         <div class="col">
             {{ form_label(form.name, 'Please enter a Name') }}
             {{ form_widget(form.name) }}
+            {{ form_errors(form.name) }}
         </div>
         <div class="col" id="some-custom-id">
             {{ form_label(form.lastname, 'Please enter a Lastname') }}
             {{ form_widget(form.lastname) }}
+            {{ form_errors(form.lastname) }}
         </div>
         <div class="col" id="some-custom-id">
             {{ form_label(form.birthday, 'Please enter a birthday') }}
